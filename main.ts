@@ -181,9 +181,10 @@ let on_log = false
 let log_list: Sprite[] = []
 let the_player: Sprite = null
 tiles.setTilemap(tiles.createTilemap(
-            hex`0e0018000b0b0b0b0b0b0d0d0b0b0b0b0b0b020208080202020802020808080208080208080202080808020208080707070707070707070707070707070707070707070707070707070f09090909090909090909090909090a0a0a0a0a0a0a0a0a0a0a0a0a0a010101010101010101010101010109090909090909090909090909090a0a0a0a0a0a0a0a0a0a0a0a0a0a01010101010101010101010101010101010101010101010101010101080808080808080808080808080802020202020202020202020208080808020202020202020202080808080202020202020202080802020801010101010101010101010101010101010101010101010101010101070707070707070707070707070f07070707070707070707070707070202020202020202020208080808080202020202020202020202020802080202020808080802020208080808080802020808080808080808`,
+            hex`0e0018000b0b0b0b0b0b0d0d0b0b0b0b0b0b020208111212020812121108080208080208080202080808020208080707070707070707070707070707070707070707070707070707070f09090909090909090909090909090a0a0a0a0a0a0a0a0a0a0a0a0a0a010101010101010101010101010109090909090909090909090909090a0a0a0a0a0a0a0a0a0a0a0a0a0a01010101010101010101010101010101010101010101010101010101080808080808080808080808080802111202020202021202020212080808020202021202020202110808080212020202020202080802020801010101010101010101010101010101010101010101010101010101070707070707070707070707070f07070707070707070707070707070211020202020202020208080808080202100202020202100211020802100202020808080802020208080808080811020808080808081008`,
             img`
 2 2 2 2 2 2 . . 2 2 2 2 2 2 
+. . . 2 2 2 . . 2 2 2 . . . 
 . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . 
@@ -195,20 +196,19 @@ tiles.setTilemap(tiles.createTilemap(
 . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . 
+. 2 2 . . . . . 2 . . . 2 . 
+. . . . . . 2 . . . . 2 . . 
+. . 2 . . . . . . . . . . . 
 . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . 
+. 2 . . . . . . . . . . . . 
+. . . 2 . . . . . 2 . 2 . . 
+. 2 . . . . . . . . . . . . 
+. . . . 2 . . . . . . . 2 . 
 `,
-            [myTiles.tile0,sprites.vehicle.roadHorizontal,sprites.castle.tileGrass1,myTiles.tile1,myTiles.tile2,myTiles.tile3,myTiles.tile4,myTiles.tile5,sprites.castle.tileGrass2,sprites.castle.tilePath2,sprites.castle.tilePath8,sprites.dungeon.chestClosed,sprites.dungeon.hazardWater,sprites.castle.tileDarkGrass3,myTiles.tile6,myTiles.tile7],
+            [myTiles.tile0,sprites.vehicle.roadHorizontal,sprites.castle.tileGrass1,myTiles.tile1,myTiles.tile2,myTiles.tile3,myTiles.tile4,myTiles.tile5,sprites.castle.tileGrass2,sprites.castle.tilePath2,sprites.castle.tilePath8,sprites.dungeon.chestClosed,sprites.dungeon.hazardWater,sprites.castle.tileDarkGrass3,myTiles.tile6,myTiles.tile7,sprites.castle.saplingPine,sprites.castle.rock0,sprites.castle.saplingOak],
             TileScale.Sixteen
         ))
 the_player = sprites.create(img`
@@ -232,6 +232,7 @@ the_player = sprites.create(img`
 the_player.setPosition(120, 328)
 scene.setBackgroundColor(13)
 scene.cameraFollowSprite(the_player)
+game.splash("this was long to ma so hope you enjoy!")
 game.onUpdate(function () {
     if (the_player.tileKindAt(TileDirection.Center, sprites.castle.tileDarkGrass3)) {
         game.over(true, effects.confetti)
